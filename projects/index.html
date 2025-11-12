@@ -1,0 +1,126 @@
+<!-- FILE: index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Julia Navarro Lucas — Portafolio académico</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Julia Navarro Lucas</h1>
+      <p class="site-sub">Universidad (UCLM / VSB Ostrava) • Ingeniería Informática • 2025 </p>
+      <nav class="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="#apuntes">Apuntes</a>
+        <a href="projects/index.html">Trabajos</a>
+        <a href="#experiencia">Experiencia</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Sobre mí</h2>
+      <p class="lead">Soy Julia, una estudiante de Ingeniería Informática en la universidad ESIIAB. Aquí se reunen todos mis intereses, desde la informática hasta los voluntariados que he realizado. Actualmente estoy participando en el programa Erasmus viviendo y estudiando en República Checa.</p>
+    </section>
+
+    <section id="destinos" class="cards">
+      <article class="card">
+        <h3>Apuntes universitarios</h3>
+        <p>Resúmenes y esquemas por asignatura.</p>
+        <a class="btn" href="#apuntes">Ver apuntes</a>
+      </article>
+      <article class="card">
+        <h3>Trabajos</h3>
+        <p>Proyectos y entregables de las asignaturas.</p>
+        <a class="btn" href="projects/index.html">Ver trabajos</a>
+      </article>
+      <article class="card">
+        <h3>Experiencia</h3>
+        <p>Prácticas, voluntariados y otras experiencia relevantes.</p>
+        <a class="btn" href="#experiencia">Ver experiencia</a>
+      </article>
+    </section>
+
+    <section id="ultimas" class="posts">
+      <h2>Últimas publicaciones</h2>
+      <div class="post-list">
+        <!-- Aquí puedes duplicar/añadir bloques .post para cada nuevo trabajo/publicación -->
+        <article class="post">
+          <h3><a href="projects/voice-over-ip.html">Voice Over IP</a></h3>
+          <p class="meta">Asignatura: Redes • Fecha: 2025-11-12</p>
+          <p>Plantilla y espacio para el trabajo sobre Voice Over IP.</p>
+        </article>
+
+        <article class="post">
+          <h3><a href="projects/fundamentals-security.html">Fundamentals of the Security in Communications</a></h3>
+          <p class="meta">Asignatura: Seguridad • Fecha: 2025-11-12</p>
+          <p>Plantilla para documentar conceptos de seguridad en comunicaciones.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="apuntes">
+      <h2>Apuntes</h2>
+      <p>Puedes enlazar aquí PDFs o carpetas por asignatura.</p>
+    </section>
+
+    <section id="experiencia">
+      <h2>Experiencia</h2>
+      <p>Breve listado de actividades relevantes, prácticas, etc.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© <span id="year"></span> Tu Nombre — Universidad</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+<!-- FILE: projects/index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trabajos — Tu Nombre</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Trabajos</h1>
+      <nav class="main-nav">
+        <a href="../index.html">Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="posts">
+      <article class="post">
+        <h2><a href="voice-over-ip.html">Voice Over IP</a></h2>
+        <p class="meta">Asignatura: Redes • 2025</p>
+        <p>Resumen breve del trabajo sobre VoIP.</p>
+      </article>
+
+      <article class="post">
+        <h2><a href="fundamentals-security.html">Fundamentals of the Security in Communications</a></h2>
+        <p class="meta">Asignatura: Seguridad • 2025</p>
+        <p>Resumen breve del trabajo sobre seguridad en comunicaciones.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© Julia Navarro Lucas — (UCLM / VSB Ostrava)</p>
+  </footer>
+</body>
+</html>
