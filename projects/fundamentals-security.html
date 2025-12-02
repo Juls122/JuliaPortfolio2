@@ -1,53 +1,335 @@
-<!-- FILE: projects/fundamentals-security.html -->
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Fundamentals of the Security in Communications — Trabajo</title>
-  <link rel="stylesheet" href="../assets/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced Google Hacking — Julia Navarro Lucas</title>
+  <meta name="description" content="Course notes: Advanced Google Hacking (Google Dorking). Fundamentals of Security in Communications 2025/2026" />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent:#eeb0bb;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#021022 0%, #071124 60%);color:#e6eef6}
+    .container{max-width:1000px;margin:36px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    header{display:flex;align-items:center;gap:18px}
+    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#ae747f,#ffdbe1);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022;box-shadow:0 4px 18px rgba(12,32,63,0.6)}
+     h1{margin:0;font-size:1.6rem}
+    .meta{color:var(--muted);font-size:0.95rem;margin-top:6px}
+    nav{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+    nav a{color:var(--accent);text-decoration:none;padding:6px 10px;border-radius:8px;background:var(--glass);font-weight:600}
+    main{display:grid;grid-template-columns:280px 1fr;gap:24px;margin-top:20px}
+    .toc{position:sticky;top:20px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;height:max-content}
+    .toc h3{margin:0 0 8px 0}
+    .toc a{display:block;color:var(--muted);text-decoration:none;padding:6px 4px;border-radius:6px}
+    .toc a:hover{color:#fff}
+    article{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border-radius:10px}
+    section{margin-bottom:20px}
+    h2{margin-top:0}
+    p{line-height:1.6;color:#d9e7f2}
+    ul{line-height:1.6}
+    code{background:#021226;padding:2px 6px;border-radius:6px;font-family:Menlo,monospace;font-size:0.95em}
+    pre{background:#031827;padding:12px;border-radius:8px;overflow:auto}
+    footer{margin-top:20px;color:var(--muted);font-size:0.9rem;text-align:center}
+    @media (max-width:900px){main{grid-template-columns:1fr} .toc{order:2}} 
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">Fundamentals of the Security in Communications</h1>
-      <nav class="main-nav">
-        <a href="../index.html">Inicio</a>
-        <a href="index.html">Trabajos</a>
-      </nav>
-    </div>
-  </header>
+  <div class="container">
+    <header>
+      <div class="logo">GH</div>
+      <div>
+        <h1>Advanced Google Hacking</h1>
+        <div class="meta">Julia Navarro Lucas — 440-2320/02 Fundamentals of the Security in Communications (2025/2026 ZS)</div>
+      </div>
+    </header>
 
-  <main class="container doc">
-    <article>
-      <h2>Resumen</h2>
-      <p>Resumen breve: objetivos del trabajo y alcance.</p>
+    <nav>
+      <a href="#introduction">Introduction</a>
+      <a href="#fundamental-concepts">Fundamental concepts</a>
+      <a href="#google-hacking">Google hacking</a>
+      <a href="#examples">Examples</a>
+      <a href="#dangers">Main dangers</a>
+      <a href="#prevent">Prevent Google dorking</a>
+      <a href="#conclusion">Conclusion</a>
+      <a href="#References">References</a>
+    </nav>
 
-      <h2>Introducción</h2>
-      <p>Contexto y necesidad de seguridad en las comunicaciones.</p>
+    <main>
+      <aside class="toc" aria-label="Table of contents">
+        <h3>Table of contents</h3>
+        <a href="#introduction">Introduction</a>
+        <a href="#fundamental-concepts">Fundamental concepts</a>
+        <a href="#google-hacking">Google hacking</a>
+        <a href="#examples">Examples</a>
+        <a href="#dangers">Main dangers</a>
+        <a href="#prevent">Prevent Google dorking</a>
+        <a href="#conclusion">Conclusion</a>
+        <a href="#References">References</a>
+      </aside>
 
-      <h2>Contenido</h2>
-      <h3>1. Modelos de amenaza</h3>
-      <p>Describe los actores, vectores y riesgos.</p>
+      <article>
+        <section id="introduction">
+          <h2>Introduction</h2>
+          <p>In the field of communications security, one of the fundamental ideas is the evaluation of public exposure of information. Although threats are typically associated with active attacks, a critical part of cybersecurity is analyzing what sensitive information is accidentally exposed.</p>
 
-      <h3>2. Criptografía aplicada</h3>
-      <p>Protocolos, cifrado, autenticación y gestión de claves.</p>
+          <p>Within the course, the concept of <strong>Google Hacking (Google Dorking)</strong> is studied as an OSINT technique that allows identifying risks such as loss of confidentiality, decreased integrity, availability issues, and poor configuration in communicating systems.</p>
 
-      <h3>3. Controles y buenas prácticas</h3>
-      <p>Medidas técnicas y administrativas.</p>
+          <p><strong>Note:</strong> Google Hacking is <em>not</em> an attack — it's a passive audit technique based on advanced search engine operators. When used properly it is legal and commonly used by security personnel to discover exposures.</p>
+        </section>
 
-      <h2>Conclusiones</h2>
-      <p>Resultados y recomendaciones.</p>
+        <section id="fundamental-concepts">
+          <h2>Fundamental concepts</h2>
+          <p>The following principles help guide audits using Google Dorking:</p>
+          <ul>
+            <li><strong>Confidentiality</strong>: Ensure personal and internal data aren't publicly accessible.</li>
+            <li><strong>Integrity</strong>: Keep public information correct, current, and unique.</li>
+            <li><strong>Security through visibility</strong>: Observe public data to decide defensive measures.</li>
+            <li><strong>Least exposure principle</strong>: Publish only the minimal necessary information.</li>
+          </ul>
 
-      <h2>Referencias</h2>
-      <ol>
-        <li>Referencias en formato académico.</li>
-      </ol>
-    </article>
-  </main>
+          <h3>1. Confidentiality</h3>
+          <p>Google auditing reveals public documents containing personal or internal data, backup files, credentials, or misconfigured admin pages. Finding and removing these exposures protects confidentiality.</p>
 
+          <h3>2. Integrity</h3>
+          <p>Auditing locates out-of-date indexed documents, cached pages, and duplicates that damage trust in public information.</p>
+
+          <h3>3. Visibility-based security</h3>
+          <p>Maps files, directories, subdomains and orphan resources. This eliminates blind spots and enables proactive defense.</p>
+
+          <h3>4. Least exposure principle</h3>
+          <p>Identifies excessive metadata and technical details that reveal attack surface — the less exposed, the smaller the surface.</p>
+
+          <h3>5. Index control</h3>
+          <p>Check <code>robots.txt</code>, <code>noindex</code> directives and indexing behavior to ensure sensitive paths are not discoverable by search engines.</p>
+
+          <h3>6. Data lifecycle hygiene</h3>
+          <p>Locate outdated reports, retired systems and leftover artifacts that should be archived or deleted to reduce long-term risk.</p>
+        </section>
+
+        <section id="google-hacking">
+          <h2>Google hacking</h2>
+          <p>Google Dorking uses advanced operators to find specific strings in indexed content. Operators include:</p>
+          <ul>
+            <li><code>filetype:</code> — search for file types (e.g. <code>filetype:pdf</code>).</li>
+            <li><code>inurl:</code> — match terms in URLs (e.g. <code>inurl:login</code>).</li>
+            <li><code>intext:</code> — search page text (e.g. <code>intext:"password"</code>).</li>
+            <li><code>intitle:</code> — search page titles (e.g. <code>intitle:"index of"</code>).</li>
+            <li><code>link:</code> — find pages linking to a URL (e.g. <code>link:example.com</code>).</li>
+            <li><code>site:</code> — restrict search to a domain (e.g. <code>site:example.com</code>).</li>
+          </ul>
+
+          <p>These operators can reveal misconfigured services, configuration files, credentials, and other sensitive information that may have been accidentally indexed.</p>
+        </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <p>Below are example dorks:</p>
+          <style>
+  .table-container {
+    max-width: 800px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f9f9ff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th {
+    background: #eeb0bb;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 18px;
+  }
+
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    color: #8f5863;
+  }
+
+  tr:hover td {
+    background: #eee7ff;
+  }
+
+  details summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #8f5863;
+  }
+
+  details p {
+    margin: 6px 0;
+    color: #8f5863;
+  }
+</style>
+
+<div class="table-container">
+<table>
+  <thead>
+    <tr>
+      <th>Google dork command</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>site:vsb.cz "2012" filetype:pdf</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Finds PDF documents containing “2012”.</p>
+          <p><strong>Cybersecurity application:</strong> Helps find old documents that may expose outdated systems.</p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+      </td>
+    </tr>
+
+    <tr>
+      <td>site:vsb.cz intitle:"index of"</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Locates visible directory listings.</p>
+          <p><strong>Cybersecurity application:</strong> Detects misconfigured servers exposing files.</p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+      </td>
+    </tr>
+
+    <tr>
+      <td>site:vsb.cz "syllabus" filetype:pdf</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Finds PDF study plans.</p>
+          <p><strong>Cybersecurity application:</strong> Can reveal software versions, teacher contacts or system info.</p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+      </td>
+    </tr>
+
+    <tr>
+      <td>site:vsb.cz "conference" filetype:ppt</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Finds conference presentations.</p>
+          <p><strong>Cybersecurity application:</strong> Sometimes contains diagrams, infrastructures or internal details.
+          </p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+      </td>
+    </tr>
+
+    <tr>
+      <td>site:vsb.cz filetype:pdf "international"</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Finds PDFs mentioning “international”.</p>
+          <p><strong>Cybersecurity application:</strong> May reveal public agreements, contacts or exposed processes.</p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+        
+      </td>
+    </tr>
+
+    <tr>
+      <td>site:fei.vsb.cz filetype:pdf "lab"</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Finds lab-related PDFs.</p>
+          <p><strong>Cybersecurity application:</strong> May expose default credentials, network diagrams or configurations.</p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+      </td>
+    </tr>
+
+    <tr>
+      <td>site:vsb.cz "Julia"</td>
+      <td>
+        <details>
+          <summary>Details</summary>
+          <p><strong>Description:</strong> Finds public mentions of the name “Julia”.</p>
+          <p><strong>Cybersecurity application:</strong> Helps audit personal data exposure (PII).</p>
+          <img src="https://via.placeholder.com/400x200?text=Example+Image" 
+       alt="Example image"
+       style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+        </details>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+        </section>
+
+        <section id="dangers">
+          <h2>Main dangers of Google hacking</h2>
+          <p>While useful, Google Dorking can expose passwords, credentials, private documents, and infrastructure weaknesses. This can lead to privacy violations, identity theft, espionage, and targeted attacks if misused.</p>
+
+          <p>Ethical and legal considerations must guide its use — improper use may violate laws or terms of service.</p>
+        </section>
+
+        <section id="prevent">
+          <h2>Prevent Google dorking</h2>
+          <ul>
+            <li><strong>Restrict information</strong>: Avoid publishing sensitive data and protect files.</li>
+            <li><strong>Robust robots.txt</strong>: Configure robots.txt to disallow sensitive paths (note: robots.txt is advisory only).</li>
+            <li><strong>NoIndex / NoFollow</strong>: Use meta tags or headers to prevent indexing when appropriate.</li>
+            <li><strong>Regular audits</strong>: Run periodic scans (including safe Google Dorking) to find exposures.</li>
+            <li><strong>Limit permissions</strong>: Ensure correct file and directory permissions.</li>
+            <li><strong>Security tooling</strong>: Use firewalls, WAFs and monitoring to detect abuse.</li>
+          </ul>
+        </section>
+
+        <section id="conclusion">
+          <h2>Conclusion</h2>
+          <p>Google Hacking demonstrates how much information can be found using search engines. When used properly it is a valuable defensive tool for researchers, students, and security professionals — helping to find exposed files, stale documents, and misconfigurations that should be fixed.</p>
+
+          <p>Effective cybersecurity mixes technical controls with awareness and good information hygiene.</p>
+        </section>
+        
+        <section id="References">
+          <h2>References (APA 7th edition)</h2>
+        <ul>
+        <li>The Knowledge Academy. (n.d.). <em>Google Dorking</em>. The Knowledge Academy Blog. Retrieved December 2, 2025, from https://www.theknowledgeacademy.com/blog/google-dorking/</li>
+  
+        <li>Imperva. (n.d.). <em>Google Dorking (Hacking)</em>. Imperva Learning Center. Retrieved December 2, 2025, from https://www.imperva.com/learn/application-security/google-dorking-hacking/</li>
+  
+        <li>Wikipedia contributors. (n.d.). <em>Google Hacking</em>. In <em>Wikipedia</em>. Retrieved December 2, 2025, from https://es.wikipedia.org/wiki/Google_Hacking</li>
+  
+        <li>StationX. (n.d.). <em>Google Dorks Cheat Sheet</em>. StationX Blog. Retrieved December 2, 2025, from https://www.stationx.net/google-dorks-cheat-sheet/</li>
+        </ul>
+         </section>
+
+        
   <footer class="site-footer container">
     <p>© Julia Navarro Lucas — (UCLM / VSB Ostrava)</p>
   </footer>
+      </article>
+    </main>
+  </div>
 </body>
 </html>
