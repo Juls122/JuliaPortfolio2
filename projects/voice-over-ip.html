@@ -1,55 +1,237 @@
 <!-- FILE: projects/voice-over-ip.html -->
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Voice Over IP — Trabajo</title>
-  <link rel="stylesheet" href="../assets/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VoIP I — Asterisk Dialplan Project</title>
+  <meta name="description" content="Complete VoIP/Asterisk project: history, extensions.conf, AEL, Lua, examples" />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent:#eeb0bb;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#021022 0%, #071124 60%);color:#e6eef6}
+    .container{max-width:1000px;margin:36px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    header{display:flex;align-items:center;gap:18px}
+    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#ae747f,#ffdbe1);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022;box-shadow:0 4px 18px rgba(12,32,63,0.6)}
+    h1{margin:0;font-size:1.6rem}
+    .meta{color:var(--muted);font-size:0.95rem;margin-top:6px}
+    nav{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+    nav a{color:var(--accent);text-decoration:none;padding:6px 10px;border-radius:8px;background:var(--glass);font-weight:600}
+    main{display:grid;grid-template-columns:280px 1fr;gap:24px;margin-top:20px}
+    .toc{position:sticky;top:20px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;height:max-content}
+    .toc h3{margin:0 0 8px 0}
+    .toc a{display:block;color:var(--muted);text-decoration:none;padding:6px 4px;border-radius:6px}
+    .toc a:hover{color:#fff}
+    article{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border-radius:10px}
+    section{margin-bottom:20px}
+    h2{margin-top:0}
+    p{line-height:1.6;color:#d9e7f2}
+    ul{line-height:1.6}
+    code{background:#021226;padding:2px 6px;border-radius:6px;font-family:Menlo,monospace;font-size:0.95em}
+    pre{background:#031827;padding:12px;border-radius:8px;overflow:auto}
+    footer{margin-top:20px;color:var(--muted);font-size:0.9rem;text-align:center}
+    @media (max-width:900px){main{grid-template-columns:1fr} .toc{order:2}}
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">Voice Over IP</h1>
-      <nav class="main-nav">
-        <a href="../index.html">Inicio</a>
-        <a href="index.html">Trabajos</a>
-      </nav>
+<div class="container">
+  <header>
+    <div class="logo">VoIP</div>
+    <div>
+      <h1>VoIP I — Asterisk Dialplan Project</h1>
+      <div class="meta">extensions.conf · AEL · Lua · Examples · History</div>
     </div>
   </header>
 
-  <main class="container doc">
+  <nav>
+    <a href="#intro">Introduction</a>
+    <a href="#history">History</a>
+    <a href="#asterisk">What is Asterisk</a>
+    <a href="#dialplan">Dialplan Basics</a>
+    <a href="#styles">Dialplan Styles</a>
+    <a href="#examples-easy">Easy Examples</a>
+    <a href="#examples-mid">Intermediate</a>
+    <a href="#examples-advanced">Advanced</a>
+    <a href="#comparison">Comparison</a>
+  </nav>
+
+  <main>
+    <aside class="toc">
+      <h3>Contents</h3>
+      <a href="#intro">1. Introduction to VoIP</a>
+      <a href="#history">2. History of VoIP</a>
+      <a href="#asterisk">3. What Is Asterisk</a>
+      <a href="#dialplan">4. Dialplan Fundamentals</a>
+      <a href="#styles">5. Dialplan Styles</a>
+      <a href="#examples-easy">6. Easy Examples</a>
+      <a href="#examples-mid">7. Intermediate</a>
+      <a href="#examples-advanced">8. Advanced</a>
+      <a href="#comparison">9. Syntax Comparison</a>
+      <a href="#conclusion">10. Conclusion</a>
+    </aside>
+
     <article>
-      <h2>Resumen</h2>
-      <p>Breve resumen del trabajo: objetivos y alcance.</p>
+      <section id="intro">
+        <h2>1. Introduction to VoIP</h2>
+        <p>Voice over IP allows voice communication over data networks. Instead of using traditional telephone lines, audio is converted into IP packets and transmitted across the internet. This project focuses on understanding VoIP through Asterisk and its three dialplan languages.</p>
+      </section>
 
-      <h2>Introducción</h2>
-      <p>Contexto, motivación y justificación del tema.</p>
+      <section id="history">
+          <h2>2. Historical background of Asterisk and the Dialplan</h2>
+          <p>Asterisk was created in 1999 by Mark Spencer as an open-source alternative to traditional PBX systems, which were expensive, proprietary, and difficult to customize. Written in C and released under the GPL license, Asterisk quickly became a central tool in the evolution of VoIP, providing the telecommunications world with a programmable, flexible, and cost‑effective platform.</p>
+          <p>In its earliest versions, Asterisk used a single configuration approach based on <code>extensions.conf</code>. This classic dialplan format offered low‑level control and simplicity, establishing the foundation for modern VoIP routing logic. As deployments grew in complexity, administrators needed more structured and maintainable ways to define call flows. This led to two major innovations:</p>
+          <ul>
+            <li><strong>AEL (Asterisk Extension Language)</strong>, introduced to simplify dialplan design using a block‑based syntax and reusable constructs.</li>
+            <li><strong>Lua Dialplan</strong>, added later to integrate a lightweight programming language, enabling dynamic logic, API calls, and advanced routing decisions.</li>
+          </ul>
+          <p>These three syntaxes coexist today, each serving different operational needs depending on system size, maintainability requirements, and the skill set of administrators.</p>
+        </section>
 
-      <h2>Contenido</h2>
-      <h3>1. Fundamentos</h3>
-      <p>Explica los conceptos básicos: protocolos, arquitecturas, códecs, etc.</p>
+      <section id="asterisk">
+        <h2>3. What Is Asterisk?</h2>
+        <p>Asterisk is an open-source PBX system capable of routing calls, managing voicemail, queues, IVRs, conferences, and more. Its core logic lives in the dialplan, executed every time a call enters the system.</p>
+      </section>
 
-      <h3>2. Implementación/Análisis</h3>
-      <p>Describe la metodología, configuraciones, resultados y pruebas.</p>
+      <section id="dialplan">
+        <h2>4. Dialplan Fundamentals</h2>
+        <p>A dialplan defines call behavior using:</p>
+        <ul>
+          <li><b>Contexts</b> — logical containers of call rules</li>
+          <li><b>Extensions</b> — numbers or patterns the caller dials</li>
+          <li><b>Priorities</b> — ordered steps</li>
+          <li><b>Applications</b> — actions (Answer, Playback, Hangup...)</li>
+        </ul>
+      </section>
 
-      <h3>3. Discusión</h3>
-      <p>Análisis crítico y lecciones aprendidas.</p>
+      <section id="styles">
+  <h2>5. Dialplan Styles Examples</h2>
 
-      <h2>Conclusiones</h2>
-      <p>Conclusiones y trabajo futuro.</p>
+  <h3>5.1 Classic Dialplan — extensions.conf</h3>
+  <pre><code>exten =&gt; 100,1,Answer()
+exten =&gt; 100,2,Playback(hello-world)
+exten =&gt; 100,3,Hangup()</code></pre>
+  <p><b>What it does:</b> Answers the call, plays a sound file, then hangs up.</p>
+  <p><b>What it teaches:</b> Basic dialplan structure: extension → priority → application.</p>
+  <p><b>Why it's used:</b> The simplest valid dialplan. Great for learning call flow.</p>
 
-      <h2>Referencias</h2>
-      <ol>
-        <li>Formato APA/IEEE de referencias utilizadas.</li>
-      </ol>
+  <h3>5.2 AEL Example</h3>
+  <pre><code>context default {
+ 100 =&gt; {
+   Answer();
+   Playback("hello-world");
+   Hangup();
+  };
+};</code></pre>
+  <p><b>What it does:</b> Same as above but with AEL's cleaner syntax.</p>
+  <p><b>Why it's used:</b> AEL is more organized and scalable for larger dialplans.</p>
 
-      <p class="print-note">(Imprime con la hoja de estilo de impresión si lo necesitas.)</p>
+  <h3>5.3 Lua Dialplan Example</h3>
+  <pre><code>extensions = {
+ default = {
+   ["100"] = function()
+      app.Answer()
+      app.Playback("hello-world")
+      app.Hangup()
+   end
+ }
+}</code></pre>
+  <p><b>What it does:</b> Same behavior, implemented dynamically with Lua.</p>
+  <p><b>Why it's used:</b> Lua allows advanced logic (APIs, loops, variables).</p>
+</section>
+
+<section>
+  <h2>6. Practical Examples (Easy)</h2>
+
+  <h3>6.1 Simple Call Answer</h3>
+  <pre><code>exten =&gt; 200,1,Answer()
+exten =&gt; 200,2,Hangup()</code></pre>
+  <p><b>What it does:</b> Immediately answers and hangs up.</p>
+  <p><b>Why it's used:</b> Useful for testing SIP client registration, codecs and connectivity.</p>
+
+  <h3>6.2 Playback Example</h3>
+  <pre><code>exten =&gt; 300,1,Answer()
+exten =&gt; 300,2,Playback(hello-world)
+exten =&gt; 300,3,Hangup()</code></pre>
+  <p><b>What it does:</b> Plays an audio file then hangs up.</p>
+  <p><b>Real use cases:</b> IVR intros, announcements, test extensions.</p>
+</section>
+
+<section>
+  <h2>7. Intermediate Examples</h2>
+
+  <h3>7.1 IVR Menu</h3>
+  <pre><code>[ivr]
+exten =&gt; s,1,Answer()
+exten =&gt; s,n,Background(main-menu)
+exten =&gt; 1,1,Goto(sales,s,1)
+exten =&gt; 2,1,Goto(support,s,1)</code></pre>
+  <p><b>What it does:</b> Plays a menu and routes caller depending on pressed key.</p>
+  <p><b>What it teaches:</b> IVR basics, DTMF routing, the use of extension <code>s</code>.</p>
+  <p><b>Why it's used:</b> This is how real call centers route callers.</p>
+
+  <h3>7.2 Conditional Routing</h3>
+  <pre><code>exten =&gt; _9X.,1,NoOp(International Call)
+exten =&gt; _9X.,n,GotoIf($[${CALLERID(num)} = 1000]?allowed:blocked)</code></pre>
+  <p><b>What it does:</b> Checks if caller ID is allowed to make international calls.</p>
+  <p><b>Teaches:</b> Pattern matching (<code>_9X.</code>) and conditional logic (<code>GotoIf</code>).</p>
+  <p><b>Real use case:</b> Restricting expensive calls to authorized users.</p>
+</section>
+
+<section>
+  <h2>8. Advanced Examples</h2>
+
+  <h3>8.1 API-based Routing (Lua)</h3>
+  <pre><code>local http = require("socket.http")
+
+extensions = {
+  default = {
+    ["800"] = function()
+      app.Answer()
+      result = http.request("https://api.example.com/route?id=" .. caller)
+      app.SayDigits(result)
+      app.Hangup()
+    end
+ }
+}</code></pre>
+  <p><b>What it does:</b> Contacts a web API and routes based on the response.</p>
+  <p><b>Teaches:</b> External integrations, dynamic routing, real-time decisions.</p>
+  <p><b>Real use cases:</b> CRM lookup, fraud detection, VIP routing.</p>
+
+  <h3>8.2 Modular AEL Dialplan</h3>
+  <pre><code>macro play_welcome() {
+  Playback("welcome");
+}
+
+context main {
+ s =&gt; {
+   Answer();
+   play_welcome();
+   goto menu|s|1;
+ };
+};</code></pre>
+  <p><b>What it does:</b> Creates a reusable macro and executes it.</p>
+  <p><b>Why it's used:</b> Keeps large systems clean and modular.</p>
+  <p><b>Real use case:</b> Centralized welcome prompts across multiple contexts.</p>
+</section>
+
+      <section id="comparison">
+        <h2>9. Comparison: When to Use Each Syntax</h2>
+        <ul>
+          <li><b>extensions.conf:</b> best for small systems, simplest syntax</li>
+          <li><b>AEL:</b> structured and maintainable for medium/large systems</li>
+          <li><b>Lua:</b> allows dynamic routing, APIs, complex logic</li>
+        </ul>
+      </section>
+
+      <section id="conclusion">
+        <h2>10. Conclusion</h2>
+        <p>This project demonstrates that building VoIP systems is not only about configuring SIP phones—it requires understanding how calls are processed, controlled, and customized. Asterisk’s dialplan languages give administrators and developers the flexibility to create IVRs, conditional call rules, automated menus, and API-driven routing. With these skills, you are equipped to build anything from a small PBX for a home office to a scalable call-center solution used by thousands of users.</p>
+      </section>
+
+      <footer>
+        © Julia Navarro Lucas — (UCLM / VSB Ostrava)
+      </footer>
     </article>
   </main>
-
-  <footer class="site-footer container">
-    <p>© Julia Navarro Lucas — (UCLM / VSB Ostrava)</p>
-  </footer>
+</div>
 </body>
 </html>
