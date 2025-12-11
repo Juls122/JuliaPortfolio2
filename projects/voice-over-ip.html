@@ -48,10 +48,12 @@
     <a href="#asterisk">What is Asterisk</a>
     <a href="#dialplan">Dialplan Basics</a>
     <a href="#styles">Dialplan Styles</a>
-    <a href="#examples-easy">Easy Examples</a>
+    <a href="#examples">Examples</a>
     <a href="#examples-mid">Intermediate</a>
     <a href="#examples-advanced">Advanced</a>
     <a href="#comparison">Comparison</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#references">References</a>
   </nav>
 
   <main>
@@ -62,11 +64,12 @@
       <a href="#asterisk">3. What Is Asterisk</a>
       <a href="#dialplan">4. Dialplan Fundamentals</a>
       <a href="#styles">5. Dialplan Styles</a>
-      <a href="#examples-easy">6. Easy Examples</a>
+      <a href="#examples">6. Examples</a>
       <a href="#examples-mid">7. Intermediate</a>
       <a href="#examples-advanced">8. Advanced</a>
       <a href="#comparison">9. Syntax Comparison</a>
       <a href="#conclusion">10. Conclusion</a>
+      <a href="#references">References</a>
     </aside>
 
     <article>
@@ -139,7 +142,7 @@ exten =&gt; 100,3,Hangup()</code></pre>
 </section>
 
 <section>
-  <h2>6. Practical Examples </h2>
+  <h2>6. Practical Examples</h2>
 
   <h3>6.1 Simple Call Answer</h3>
   <pre><code>exten =&gt; 200,1,Answer()
@@ -226,6 +229,80 @@ context main {
         <h2>10. Conclusion</h2>
         <p>This project demonstrates that building VoIP systems is not only about configuring SIP phones—it requires understanding how calls are processed, controlled, and customized. Asterisk’s dialplan languages give administrators and developers the flexibility to create IVRs, conditional call rules, automated menus, and API-driven routing. With these skills, you are equipped to build anything from a small PBX for a home office to a scalable call-center solution used by thousands of users.</p>
       </section>
+<section id="references">
+  <h2>References</h2>
+
+  <ul>
+    <li>
+      Meggelen, J. Van, Smith, J., & Madsen, L. (2013). 
+      <i>Asterisk: The Definitive Guide</i> (4th ed.). O’Reilly Media.
+    </li>
+    <li>
+      Collins, D. (2011). 
+      <i>Carrier Grade Voice Over IP</i> (3rd ed.). McGraw-Hill.
+    </li>
+  </ul>
+
+
+  <ul>
+    <li>
+      Sangoma Technologies. (n.d.). <i>Asterisk Open Source PBX</i>.  
+      https://www.asterisk.org/
+    </li>
+    <li>
+      Cisco Systems. (n.d.). <i>Introduction to Voice over IP</i>.  
+      https://www.cisco.com/
+    </li>
+    <li>
+      FreePBX Project. (n.d.). <i>Introduction to VoIP and Asterisk</i>.  
+      https://www.freepbx.org/
+    </li>
+  </ul>
+
+ 
+  <ul>
+    <li>
+      Asterisk Wiki. (n.d.). <i>Dialplan Examples (extensions.conf)</i>.  
+      https://wiki.asterisk.org/wiki/display/AST/Dialplan
+    </li>
+    <li>
+      Asterisk Wiki. (n.d.). <i>AEL Examples and Syntax</i>.  
+      https://wiki.asterisk.org/wiki/display/AST/Asterisk+Extension+Language+(AEL)
+    </li>
+    <li>
+      Asterisk Wiki. (n.d.). <i>Lua Dialplan Examples</i>.  
+      https://wiki.asterisk.org/wiki/display/AST/Lua+Dialplan
+    </li>
+    <li>
+      VoIP-Info.org. (n.d.). <i>Asterisk Dialplan Cookbook</i>.  
+      https://www.voip-info.org/asterisk-dialplan/
+    </li>
+    <li>
+      VoIP-Info.org. (n.d.). <i>Asterisk AEL Examples</i>.  
+      https://www.voip-info.org/asterisk-config-ael/
+    </li>
+    <li>
+      VoIP-Info.org. (n.d.). <i>Asterisk Lua Examples</i>.  
+      https://www.voip-info.org/asterisk-config-lua/
+    </li>
+    <li>
+      Nerd Vittles / PBX in a Flash. (n.d.). <i>Asterisk Tutorials and Example Scripts</i>.  
+      https://nerdvittles.com/
+    </li>
+    <li>
+      GitHub. (n.d.). <i>Asterisk Example Dialplans</i>.  
+      https://github.com/search?q=asterisk+dialplan+examples
+    </li>
+    <li>
+      The VoIP Classroom. (n.d.). <i>Asterisk IVR and Dialplan Examples</i>.  
+      https://www.thevoipclassroom.com/
+    </li>
+    <li>
+      Community Forums. (n.d.). <i>Asterisk Example Configurations</i>.  
+      https://community.asterisk.org/
+    </li>
+  </ul>
+</section>
 
       <footer>
         © Julia Navarro Lucas — (UCLM / VSB Ostrava)
