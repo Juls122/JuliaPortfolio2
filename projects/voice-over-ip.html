@@ -105,7 +105,7 @@
         </ul>
       </section>
 
-      <section id="styles">
+      <section id="examples">
   <h2>5. Dialplan Styles Examples</h2>
 
   <h3>5.1 Classic Dialplan — extensions.conf</h3>
@@ -159,6 +159,7 @@ exten =&gt; 300,3,Hangup()</code></pre>
 </section>
 
 <section>
+    <section id="examples-mid">
   <h2>7. Intermediate Examples</h2>
 
   <h3>7.1 IVR Menu</h3>
@@ -180,6 +181,7 @@ exten =&gt; _9X.,n,GotoIf($[${CALLERID(num)} = 1000]?allowed:blocked)</code></pr
 </section>
 
 <section>
+    <section id="examples-advanced">
   <h2>8. Advanced Examples</h2>
 
   <h3>8.1 API-based Routing (Lua)</h3>
