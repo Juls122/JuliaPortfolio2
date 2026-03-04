@@ -1,11 +1,36 @@
+/* ============================= */
+/* 🎨 Theme Variables (Pastel)   */
+/* ============================= */
+
+/* 🌞 Light Mode (Default Day Theme) */
 :root {
-  --bg: #0d1117;
-  --surface: #111827;
-  --card: #141b26;
-  --muted: #8b96a7;
-  --accent: #7ea3ff;
-  --border: rgba(255,255,255,0.05);
+  --bg: #f7f9ff;
+  --surface: #ffffff;
+  --card: #f1f5ff;
+  --muted: #7f8aa8;
+  --accent: #8fa4ff;
+  --border: rgba(0, 0, 0, 0.08);
+
+  --text: #1b2a4a;
 }
+
+/* 🌙 Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --surface: #1b273d;
+    --card: #1a2336;
+    --muted: #9aa8c7;
+    --accent: #9fb4ff;
+    --border: rgba(255, 255, 255, 0.08);
+
+    --text: #e6f0ff;
+  }
+}
+
+/* ============================= */
+/* Global Styles                 */
+/* ============================= */
 
 * {
   box-sizing: border-box;
@@ -15,8 +40,9 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: Inter, system-ui, -apple-system, sans-serif;
-  background: linear-gradient(180deg, #060b14 0%, #0d1117 60%);
-  color: #e5eef7;
+
+  background: var(--bg);
+  color: var(--text);
 }
 
 /* Layout */
@@ -57,13 +83,19 @@ html, body {
   color: var(--accent);
   padding: 6px 12px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0, 0, 0, 0.03);
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
+@media (prefers-color-scheme: dark) {
+  .main-nav a {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
 .main-nav a:hover {
-  background: rgba(255,255,255,0.07);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 /* Hero */
@@ -73,7 +105,7 @@ html, body {
 
 .lead {
   line-height: 1.65;
-  color: #d6e2f3;
+  color: var(--muted);
 }
 
 /* Cards */
@@ -94,7 +126,7 @@ html, body {
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
@@ -108,7 +140,7 @@ html, body {
   padding: 8px 14px;
   border-radius: 8px;
   background: var(--accent);
-  color: #020814;
+  color: #0b1020;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -171,3 +203,4 @@ html, body {
     margin: 20px auto;
   }
 }
+
