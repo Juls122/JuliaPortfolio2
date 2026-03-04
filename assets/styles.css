@@ -10,11 +10,10 @@
   --muted: #7f8aa8;
   --accent: #8fa4ff;
   --border: rgba(0, 0, 0, 0.08);
-
   --text: #1b2a4a;
 }
 
-/* 🌙 Dark Mode */
+/* 🌙 Dark Mode automático según sistema */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0f172a;
@@ -23,12 +22,13 @@
     --muted: #9aa8c7;
     --accent: #9fb4ff;
     --border: rgba(255, 255, 255, 0.08);
-
     --text: #e6f0ff;
   }
 }
-/* Override manual theme selection */
 
+/* ============================= */
+/* 🎛️ Override manual theme selection */
+/* ============================= */
 html[data-theme="light"] {
   --bg: #f7f9ff;
   --surface: #ffffff;
@@ -49,7 +49,6 @@ html[data-theme="dark"] {
   --text: #e6f0ff;
 }
 
-
 /* ============================= */
 /* Global Styles                 */
 /* ============================= */
@@ -62,7 +61,6 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: Inter, system-ui, -apple-system, sans-serif;
-
   background: var(--bg);
   color: var(--text);
 }
@@ -78,6 +76,9 @@ html, body {
 .site-header {
   padding-bottom: 18px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .site-title {
@@ -225,4 +226,5 @@ html, body {
     margin: 20px auto;
   }
 }
+
 
