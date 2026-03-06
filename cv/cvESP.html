@@ -7,76 +7,35 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/assets/style.css">
-
 <style>
-
-/* ============================= */
-/* 🎨 Theme Variables (Pastel)   */
-/* ============================= */
-
 :root {
-  --bg: #f7f9ff;
-  --surface: #ffffff;
-  --card: #f1f5ff;
-  --muted: #7f8aa8;
-  --accent: #8fa4ff;
-  --border: rgba(0, 0, 0, 0.08);
-  --text: #1b2a4a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f172a;
-    --surface: #1b273d;
-    --card: #1a2336;
-    --muted: #9aa8c7;
-    --accent: #9fb4ff;
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #e6f0ff;
-  }
-}
-
-html[data-theme="light"] {
-  --bg: #f7f9ff;
-  --surface: #ffffff;
-  --card: #f1f5ff;
-  --muted: #7f8aa8;
-  --accent: #8fa4ff;
-  --border: rgba(0, 0, 0, 0.08);
-  --text: #1b2a4a;
-}
-
-html[data-theme="dark"] {
+  /* Tus colores Pastel adaptados al modo oscuro moderno */
   --bg: #0f172a;
   --surface: #1b273d;
   --card: #1a2336;
   --muted: #9aa8c7;
-  --accent: #9fb4ff;
+  --accent: #8fa4ff;   /* Tu azul pastel */
+  --accent2: #b8c6ff;  /* Variación para degradados */
   --border: rgba(255, 255, 255, 0.08);
   --text: #e6f0ff;
 }
 
-/* ============================= */
-/* 🛠️ CV Layout & Overrides      */
-/* ============================= */
-
-* { box-sizing: border-box; }
-
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at 20% 20%, #1e293b, #0f172a);
   color: var(--text);
   line-height: 1.6;
 }
 
 .container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 32px;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 50px 0;
 }
 
+/* Hero */
 .hero {
   text-align: center;
   margin-bottom: 60px;
@@ -85,10 +44,17 @@ body {
 .hero h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), #b8c6ff);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: .9;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .highlight {
@@ -96,11 +62,12 @@ body {
   font-weight: 600;
 }
 
+/* Stats */
 .stats {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
+  gap: 30px;
+  margin-top: 35px;
   flex-wrap: wrap;
 }
 
@@ -110,16 +77,17 @@ body {
   border-radius: 15px;
   text-align: center;
   border: 1px solid var(--border);
-  flex: 1;
-  min-width: 150px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  min-width: 160px;
 }
 
 .stat h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--accent);
 }
 
+/* Sections */
 .section {
   margin: 60px 0;
 }
@@ -127,14 +95,22 @@ body {
 .section h2 {
   color: var(--accent);
   margin-bottom: 25px;
-  border-bottom: 2px solid var(--border);
-  display: inline-block;
-  padding-right: 20px;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section h2::after {
+  content: "";
+  height: 1px;
+  flex-grow: 1;
+  background: var(--border);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, min-max(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
 }
 
@@ -142,25 +118,29 @@ body {
   background: var(--card);
   padding: 25px;
   border-radius: 15px;
+  transition: .3s;
   border: 1px solid var(--border);
-  transition: transform 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(143, 164, 255, 0.15);
 }
 
 .badge {
   display: inline-block;
   padding: 6px 12px;
-  background: var(--surface);
-  border-radius: 20px;
+  background: rgba(143, 164, 255, 0.1);
+  color: var(--accent);
+  border-radius: 8px;
   margin: 5px 5px 0 0;
   font-size: .85rem;
-  border: 1px solid var(--border);
-  color: var(--muted);
+  font-family: 'Fira Code', monospace;
+  border: 1px solid rgba(143, 164, 255, 0.2);
 }
 
+/* Timeline */
 .timeline {
   border-left: 3px solid var(--accent);
   padding-left: 20px;
@@ -171,228 +151,174 @@ body {
   position: relative;
 }
 
+.timeline-item strong {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+/* Arreglo Idiomas */
+.lang-container {
+  margin-bottom: 25px;
+}
+
+.lang-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
 .progress {
-  height: 10px;
-  background: var(--border);
-  border-radius: 20px;
-  margin-top: 8px;
+  height: 8px;
+  background: var(--surface);
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
 }
 
 footer {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 80px;
   padding-top: 20px;
   border-top: 1px solid var(--border);
-  color: var(--muted);
+  opacity: .7;
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-}
+a { color: var(--accent); text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; }
 
 @media (max-width: 600px) {
   .hero h1 { font-size: 2.5rem; }
-  .container { padding: 20px; }
+  .stats { gap: 15px; }
 }
 </style>
-
 </head>
 
 <body>
-
 <div class="container">
 
 <section class="hero">
-  <p style="margin-top:20px;">
-<a href="../cv/cv_en.html" class="highlight">
-View English CV
-</a>
-</p>
-<h1>Julia Navarro Lucas</h1>
+  <p style="margin-bottom: 20px;"><a href="../cv/cvENG.html" class="highlight">View English CV</a></p>
+  <h1>Julia Navarro Lucas</h1>
+  <p>
+    Futura <span class="highlight">Ingeniera Informática</span> especializada en
+    <span class="highlight">Sistemas, Redes y Ciberseguridad</span>.
+    Perfil internacional con mentalidad analítica y orientación técnica.
+  </p>
 
-<p>
-Futura <span class="highlight">Ingeniera Informática</span> especializada en
-<span class="highlight">Sistemas, Redes y Ciberseguridad</span>.
-Perfil internacional con mentalidad analítica y orientación técnica.
-Alta capacidad de aprendizaje y adaptación a entornos profesionales exigentes.
-</p>
-
-<div class="stats">
-<div class="stat">
-<h2>C1</h2>
-Nivel de Inglés
-</div>
-
-<div class="stat">
-<h2>2+</h2>
-Países con experiencia académica
-</div>
-
-<div class="stat">
-<h2>2023</h2>
-Inicio del Grado en Ingeniería
-</div>
-</div>
+  <div class="stats">
+    <div class="stat">
+      <h2>C1</h2>
+      Nivel Inglés
+    </div>
+    <div class="stat">
+      <h2>2+</h2>
+      Países Exp.
+    </div>
+    <div class="stat">
+      <h2>2023</h2>
+      Inicio Grado
+    </div>
+  </div>
 </section>
 
 <section class="section">
-<h2>Perfil Profesional</h2>
-
-<div class="card">
-Estudiante de <b>Ingeniería Informática bilingüe</b> con base sólida en arquitectura
-de computadores, diseño de redes y ciberseguridad.
-
-Experiencia internacional mediante programa <b>Erasmus</b> en la
-Universidad Técnica de Ostrava (República Checa).
-
-Persona altamente <b>adaptable, con pensamiento analítico y habilidades de
-trabajo en equipo</b>. <br>
-
-
-<br>Busco primera <b>oportunidad laboral</b> en el sector tecnológico para aplicar
-conocimientos técnicos en entornos colaborativos y contribuir al desarrollo
-de soluciones seguras, eficientes y útiles.
-</div>
+  <h2>Perfil Profesional</h2>
+  <div class="card">
+    Estudiante de <b>Ingeniería Informática bilingüe</b> con base sólida en arquitectura de computadores, diseño de redes y ciberseguridad. 
+    Experiencia internacional mediante programa <b>Erasmus</b> en la Universidad Técnica de Ostrava.
+    <br><br>
+    Busco primera <b>oportunidad laboral</b> para aplicar conocimientos técnicos y contribuir al desarrollo de soluciones seguras y eficientes.
+  </div>
 </section>
 
 <section class="section">
-<h2>Competencias Técnicas</h2>
+  <h2>Competencias Técnicas</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Software</h3>
+      <div class="badge">Python</div>
+      <div class="badge">Java</div>
+      <div class="badge">C/C++</div>
+      <div class="badge">Git</div>
+      <div class="badge">VS Code</div>
+    </div>
 
-<div class="grid">
+    <div class="card">
+      <h3>Redes y Seguridad</h3>
+      <div class="badge">TCP/IP</div>
+      <div class="badge">DNS/DHCP</div>
+      <div class="badge">SSH</div>
+      <div class="badge">Wireshark</div>
+      <div class="badge">Cisco</div>
+    </div>
 
-<div class="card">
-<h3>Desarrollo de Software</h3>
-<div class="badge">Python</div>
-<div class="badge">Java</div>
-<div class="badge">C/C++</div>
-<div class="badge">Git & GitHub</div>
-<div class="badge">VS Code</div>
-<div class="badge">IntelliJ IDEA</div>
-</div>
-
-<div class="card">
-<h3>Redes y Seguridad</h3>
-<div class="badge">TCP/IP</div>
-<div class="badge">DNS</div>
-<div class="badge">DHCP</div>
-<div class="badge">HTTP/S</div>
-<div class="badge">SSH</div>
-<div class="badge">ICMPv6</div>
-<div class="badge">Cisco Packet Tracer</div>
-<div class="badge">Wireshark</div>
-</div>
-
-<div class="card">
-<h3>Sistemas y Bases de Datos</h3>
-<div class="badge">Linux (Ubuntu)</div>
-<div class="badge">MySQL</div>
-<div class="badge">PostgreSQL</div>
-<div class="badge">MATLAB</div>
-<div class="badge">LaTeX</div>
-</div>
-
-</div>
+    <div class="card">
+      <h3>Sistemas y BD</h3>
+      <div class="badge">Linux</div>
+      <div class="badge">MySQL</div>
+      <div class="badge">PostgreSQL</div>
+      <div class="badge">LaTeX</div>
+    </div>
+  </div>
 </section>
 
 <section class="section">
-<h2>Formación Académica e Internacional</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<strong>Grado en Ingeniería Informática Bilingüe</strong><br>
-UCLM — Especialización en Ingeniería de Computadores<br>
-Septiembre 2023 – Actualidad
-</div>
-
-<div class="timeline-item">
-<strong>Programa Erasmus+</strong><br>
-Universidad Técnica de Ostrava<br>
-Septiembre 2025 – Junio 2026
-</div>
-
-<div class="timeline-item">
-<strong>Experiencia Administrativa</strong><br>
-Gestión documental, atención al cliente y organización de procesos de oficina.
-</div>
-
-<div class="timeline-item">
-<strong>Voluntariado Internacional — Praga</strong><br>
-Apoyo educativo y cuidado infantil bilingüe (2–8 años).
-</div>
-
-</div>
+  <h2>Formación e Internacional</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>Grado en Ingeniería Informática Bilingüe</strong><br>
+      UCLM — Especialización en Ingeniería de Computadores<br>
+      2023 – Actualidad
+    </div>
+    <div class="timeline-item">
+      <strong>Programa Erasmus+</strong><br>
+      Universidad Técnica de Ostrava (República Checa)<br>
+      2025 – 2026
+    </div>
+    <div class="timeline-item">
+      <strong>Voluntariado Internacional — Praga</strong><br>
+      Apoyo educativo y cuidado infantil bilingüe.
+    </div>
+  </div>
 </section>
 
 <section class="section">
   <h2>Idiomas</h2>
-  
-  <div style="margin-top: 15px;">
-    <div class="lang-item" style="margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-        <span>Español</span>
-        <span class="highlight">Nativo</span>
-      </div>
-      <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
-    </div>
+  <div class="lang-container">
+    <div class="lang-info"><span>Español</span><span class="highlight">Nativo</span></div>
+    <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+  </div>
+  <div class="lang-container">
+    <div class="lang-info"><span>Inglés</span><span class="highlight">Avanzado C1</span></div>
+    <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+  </div>
+</section>
 
-    <div class="lang-item">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-        <span>Inglés</span>
-        <span class="highlight">Avanzado C1</span>
-      </div>
-      <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+<section class="section">
+  <h2>Fortalezas</h2>
+  <div class="grid">
+    <div class="card" style="padding: 15px 25px;">
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li>-Trabajo en equipo</li>
+        <li>- Aprendizaje rápido</li>
+        <li>- Pensamiento analítico</li>
+        <li>- Disponibilidad para viajar</li>
+      </ul>
     </div>
   </div>
 </section>
-<h3 style="
-    margin-top:0;
-    margin-bottom:18px;
-    color:var(--accent);
-    font-weight:600;
-">
-Fortalezas Profesionales
-</h3>
-
-<div style="
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    color:var(--text);
-    font-size:0.98rem;
-">
-
-<div style="padding-left:6px;">• Mentalidad orientada al trabajo en equipo</div>
-<div style="padding-left:6px;">• Aprendizaje rápido y adaptación tecnológica</div>
-<div style="padding-left:6px;">• Pensamiento analítico</div>
-<div style="padding-left:6px;">• Experiencia internacional</div>
-<div style="padding-left:6px;">• Disponibilidad para viajar</div>
-<div style="padding-left:6px;">• Carnet de conducir</div>
-
-</div>
-
-</div>
-
-
-</section>
 
 <footer>
-Julia Navarro Lucas — 2026<br>
-<a href="https://linkedin.com/in/julia-navarro-lucas-868a6231b" target="_blank">
-Perfil LinkedIn
-</a>
+  Julia Navarro Lucas — 2026<br>
+  <a href="https://linkedin.com/in/julia-navarro-lucas-868a6231b" target="_blank">LinkedIn Profile</a>
 </footer>
 
 </div>
-
 </body>
 </html>
 
