@@ -1,1 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Julia Navarro Lucas | Computer Engineering</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0f1c;
+  --card: #111827;
+  --surface: #1e293b;
+  --accent: #8fa4ff;   
+  --accent2: #b8c6ff;  
+  --text: #e5e7eb;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0f172a, #0a0f1c);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1150px;
+  margin: auto;
+  padding: 50px 0;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: .85;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--card);
+  padding: 20px 30px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 20px rgba(143, 164, 255, 0.05);
+  min-width: 180px;
+}
+
+.stat h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+/* Sections */
+.section {
+  margin: 60px 0;
+}
+
+.section h2 {
+  color: var(--accent);
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+  display: inline-block;
+  padding-right: 30px;
+  padding-bottom: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 15px;
+  transition: .3s;
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 0 25px rgba(143, 164, 255, 0.12);
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #0f172a;
+  border-radius: 20px;
+  margin: 5px 5px 0 0;
+  font-size: .85rem;
+  font-family: 'Fira Code', monospace;
+  border: 1px solid var(--border);
+}
+
+/* Timeline */
+.timeline {
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+}
+
+/* Languages */
+.lang-item {
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.lang-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progress {
+  height: 10px;
+  background: #0f172a;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  opacity: .7;
+}
+
+a { color: var(--accent); text-decoration: none; transition: .2s; }
+a:hover { opacity: 0.8; }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<section class="hero">
+  <p style="margin-top:20px; margin-bottom: 20px;">
+    <a href="../cv/cvESP.html" class="highlight">
+      Ver CV en Español
+    </a>
+  </p>
+  <h1>Julia Navarro Lucas</h1>
+  <p>
+    Future <span class="highlight">Computer Engineer</span> specialized in
+    <span class="highlight">Systems, Networks & Cybersecurity</span>.
+    International profile with an analytical mindset and technical orientation.
+    High learning capacity and adaptation to demanding professional environments.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <h2>C1</h2>
+      English Level
+    </div>
+    <div class="stat">
+      <h2>2+</h2>
+      Countries Academic Exp.
+    </div>
+    <div class="stat">
+      <h2>2023</h2>
+      Degree Path Started
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Professional Profile</h2>
+  <div class="card">
+    <b>Bilingual Computer Engineering</b> student with a solid foundation in computer architecture, network design, and cybersecurity. 
+    International experience through the <b>Erasmus</b> program at the Technical University of Ostrava (Czech Republic). 
+    Highly <b>adaptable, with analytical thinking and strong teamwork skills</b>.
+    <br><br>
+    Seeking my first <b>professional opportunity</b> in the technology sector to apply technical knowledge in collaborative environments and contribute to the development of secure, efficient, and useful solutions.
+  </div>
+</section>
+
+<section class="section">
+  <h2>Technical Expertise</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Software Development</h3>
+      <div class="badge">Python</div>
+      <div class="badge">Java</div>
+      <div class="badge">C/C++</div>
+      <div class="badge">Git & GitHub</div>
+      <div class="badge">VS Code</div>
+      <div class="badge">IntelliJ IDEA</div>
+    </div>
+
+    <div class="card">
+      <h3>Networks & Security</h3>
+      <div class="badge">TCP/IP</div>
+      <div class="badge">DNS</div>
+      <div class="badge">DHCP</div>
+      <div class="badge">HTTP/S</div>
+      <div class="badge">SSH</div>
+      <div class="badge">ICMPv6</div>
+      <div class="badge">Cisco Packet Tracer</div>
+      <div class="badge">Wireshark</div>
+    </div>
+
+    <div class="card">
+      <h3>Systems & Databases</h3>
+      <div class="badge">Linux (Ubuntu)</div>
+      <div class="badge">MySQL</div>
+      <div class="badge">PostgreSQL</div>
+      <div class="badge">MATLAB</div>
+      <div class="badge">LaTeX</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Education & International Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>BSc in Bilingual Computer Engineering</strong><br>
+      UCLM — Specialization in Computer Engineering<br>
+      September 2023 – Present
+    </div>
+    <div class="timeline-item">
+      <strong>Erasmus+ Program</strong><br>
+      Technical University of Ostrava<br>
+      September 2025 – June 2026
+    </div>
+    <div class="timeline-item">
+      <strong>Administrative Experience</strong><br>
+      Document management, customer service, and office process organization.
+    </div>
+    <div class="timeline-item">
+      <strong>International Volunteering — Prague</strong><br>
+      Educational support and bilingual childcare (ages 2–8).
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Languages</h2>
+  <div class="lang-item">
+    <div class="lang-label">
+      <span>Spanish — Native</span>
+      <span class="highlight">100%</span>
+    </div>
+    <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+  </div>
+
+  <div class="lang-item">
+    <div class="lang-label">
+      <span>English — Advanced C1</span>
+      <span class="highlight">85%</span>
+    </div>
+    <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Professional Strengths</h2>
+  <div class="card">
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div>• Team-oriented mindset</div>
+      <div>• Fast learner & technological adaptation</div>
+      <div>• Analytical thinking</div>
+      <div>• International experience</div>
+      <div>• Availability to travel</div>
+      <div>• Driving license</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Julia Navarro Lucas — 2026<br>
+  <a href="https://linkedin.com/in/julia-navarro-lucas-868a6231b" target="_blank">
+    LinkedIn Profile
+  </a>
+</footer>
+
+</div>
+</body>
+</html>
